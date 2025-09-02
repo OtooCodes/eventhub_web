@@ -1,9 +1,9 @@
 from nicegui import ui
 
-# Load Tailwind + JS
+# Load Tailwind + JS into <head>
 ui.add_head_html('''
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<script src="/static/script.js"></script>
+<script src="js\script.jsjs"></script>
 ''')
 
 # NAVBAR
@@ -17,12 +17,12 @@ with ui.header().classes('bg-white shadow-md px-6 py-4 flex justify-between item
         ui.link('Blog', '#')
         ui.link('Contact', '#')
 
-    # Login button
+    # Login button (desktop only)
     ui.button('Login').classes('hidden md:block bg-purple-600 text-white px-4 py-2 rounded-lg')
 
-    # Hamburger Icon (visible on mobile)
-    ui.add_html('''
-    <button id="menu-toggle" class="md:hidden flex flex-col space-y-1.5">
+    # Hamburger Icon (mobile only)
+    ui.html('''
+    <button id="menu-toggle" class="md:hidden flex flex-col space-y-1">
         <span class="block w-6 h-0.5 bg-purple-700"></span>
         <span class="block w-6 h-0.5 bg-purple-700"></span>
         <span class="block w-6 h-0.5 bg-purple-700"></span>
@@ -30,7 +30,7 @@ with ui.header().classes('bg-white shadow-md px-6 py-4 flex justify-between item
     ''')
 
 # Mobile Dropdown Menu (hidden by default)
-ui.add_html('''
+ui.html('''
 <div id="mobile-menu" class="hidden flex-col space-y-4 bg-white shadow-md p-6 absolute top-16 left-0 right-0 z-50 md:hidden">
     <a href="#" class="text-gray-700 font-medium hover:text-purple-600">Home</a>
     <a href="#" class="text-gray-700 font-medium hover:text-purple-600">Events</a>
